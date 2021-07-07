@@ -1,8 +1,11 @@
-import styled from "styled-components";
-import colors from "../components/Colors";
-import { Button, Input } from "../components/common/Components";
-import logo from "../assets/images/logo.png";
 import { Link } from "react-router-dom";
+import { Button, Input } from "../components/common/Components";
+import {
+  LoginBox,
+  TextLogin,
+  FormsLogin,
+} from "../components/common/LoginComponents";
+import logo from "../assets/images/logo.png";
 
 export default function Login() {
   return (
@@ -10,42 +13,16 @@ export default function Login() {
       <Link to="/">
         <img src={logo} alt="logo"></img>
       </Link>
-      <Forms>
-        <Text>Email</Text>
+      <FormsLogin>
+        <TextLogin>Email</TextLogin>
         <Input placeholder="Login"></Input>
-        <Text>Senha</Text>
+        <TextLogin>Senha</TextLogin>
         <Input placeholder="Senha"></Input>
         <Button>Entrar</Button>
         <Link to="/sign-up">
-          <Text center={true}>Novo na Camisara? Cadastre-se!</Text>
+          <TextLogin center={true}>Novo na Camisara? Cadastre-se!</TextLogin>
         </Link>
-      </Forms>
+      </FormsLogin>
     </LoginBox>
   );
 }
-
-const LoginBox = styled.div`
-  display: flex;
-  height: 100vh;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: ${colors.background};
-  img {
-    width: 200px;
-    height: auto;
-  }
-`;
-
-const Forms = styled.form`
-  display: flex;
-  flex-flow: column;
-  justify-content: space-between;
-  height: 300px;
-`;
-
-const Text = styled.p`
-  font-size: 16px;
-  color: #483c46;
-  text-align: ${(props) => props.center && "center"};
-`;
