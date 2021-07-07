@@ -13,7 +13,7 @@ export default function Login() {
       <Link to="/">
         <img src={logo} alt="logo"></img>
       </Link>
-      <FormsLogin>
+      <FormsLogin height="300px">
         <TextLogin>Email</TextLogin>
         <Input placeholder="Login"></Input>
         <TextLogin>Senha</TextLogin>

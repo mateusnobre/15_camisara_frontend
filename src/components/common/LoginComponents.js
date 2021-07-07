@@ -18,7 +18,7 @@ export const FormsLogin = styled.form`
   display: flex;
   flex-flow: column;
   justify-content: space-between;
-  height: 300px;
+  height: ${(props) => props.height};
 `;
 
 export const TextLogin = styled.p`
