@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Button, Input } from "../components/common/Components";
 import {
   LoginBox,
@@ -6,18 +6,54 @@ import {
   FormsLogin,
 } from "../components/common/LoginComponents";
 import logo from "../assets/images/logo.png";
+import { useState } from "react";
+import axios from "axios";
 
 export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const history = useHistory();
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const body = { email, password };
+
+    const request = axios.post("http://127.0.0.1:4000/login", body);
+
+    request.then((response) => {
+      localStorage.setItem("user", JSON.stringify(response.data.user));
+      localStorage.setItem("token", JSON.stringify(response.data.token));
+      console.log("ok");
+      history.push("/home");
+    });
+    request.catch((error) => {
+      if (error.response.status === 409) {
+        alert("Usuario e/ou senha errados");
+      } else {
+        alert("Dados preenchidos incorretamente");
+      }
+    });
+  }
   return (
     <LoginBox>
       <Link to="/">
         <img src={logo} alt="logo"></img>
       </Link>
-      <FormsLogin height="300px">
+      <FormsLogin height="300px" onSubmit={handleSubmit}>
         <TextLogin>Email</TextLogin>
-        <Input placeholder="Login"></Input>
+        <Input
+          placeholder="Email"
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        ></Input>
         <TextLogin>Senha</TextLogin>
-        <Input placeholder="Senha"></Input>
+        <Input
+          placeholder="Senha"
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        ></Input>
         <Button>Entrar</Button>
         <Link to="/sign-up">
           <TextLogin center={true}>Novo na Camisara? Cadastre-se!</TextLogin>
