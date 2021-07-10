@@ -3,7 +3,7 @@ import colors from "../Colors";
 
 export const Input = styled.input`
   width: 400px;
-  height: 60px;
+  height: 50px;
   border: none;
   border-radius: 5px;
   font-size: 15px;

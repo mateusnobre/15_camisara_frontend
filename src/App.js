@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Checkout from "./pages/Checkout";
+import Product from "./pages/Product";
 
 import "./assets/styles/reset.css";
 import "./assets/styles/style.css";
@@ -31,6 +32,9 @@ export default function App() {
         </Route>
         <Route path="/checkout" exact>
           <Checkout />
+        </Route>
+        <Route path="/product/:id">
+          <Product></Product>
         </Route>
       </Switch>
     </Router>
