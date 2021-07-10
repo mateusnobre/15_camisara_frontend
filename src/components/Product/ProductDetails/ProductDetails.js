@@ -2,11 +2,11 @@ import styled from "styled-components";
 import ProductImages from "./ProductImages";
 import ProductPurchase from "./ProductPurchase";
 
-export default function ProductDetails() {
+export default function ProductDetails({ product }) {
   return (
     <Container>
-      <ProductImages></ProductImages>
-      <ProductPurchase></ProductPurchase>
+      <ProductImages product={product}></ProductImages>
+      <ProductPurchase product={product}></ProductPurchase>
     </Container>
   );
 }

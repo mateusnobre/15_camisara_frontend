@@ -5,8 +5,9 @@ import colors from "../../Colors";
 export default function Sizes(props) {
   const { sizes } = props;
   const [selectedSize, setSelectedSize] = useState("");
+  console.log(sizes.length);
   return (
-    <Container>
+    <Container length={45 * sizes.length}>
       {sizes.map((size) => (
         <Size
           onClick={() =>
@@ -23,7 +24,7 @@ export default function Sizes(props) {
 
 const Container = styled.div`
   display: flex;
-  width: 220px;
+  width: ${(props) => props.length + "px"};
   justify-content: space-between;
 `;
 

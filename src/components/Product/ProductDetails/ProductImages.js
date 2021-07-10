@@ -1,22 +1,11 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import ReactImageZoom from "react-image-zoom";
-import firstImage from "../../../assets/images/test_product.jpg";
-import secondImage from "../../../assets/images/test_product2.jpg";
 import colors from "../../Colors";
 
-const product = {
-  mainImage: firstImage,
-  images: [firstImage, secondImage],
-  name: "Camisa Moletom Flamengo",
-  price: "50.00",
-  description: "Camisa Linda do flamengo",
-  availations: "",
-};
-
-export default function Images() {
+export default function Images({ product }) {
   const [availableImages, setAvailableImages] = useState([]);
-  const [mainImage, setMainImage] = useState(firstImage);
+  const [mainImage, setMainImage] = useState(null);
   const [bigImageOptions, setBigImageOptions] = useState(null);
 
   useEffect(() => {

@@ -1,22 +1,10 @@
 import styled from "styled-components";
-import firstImage from "../../../assets/images/test_product.jpg";
-import secondImage from "../../../assets/images/test_product2.jpg";
 import { useState } from "react";
 import { Button } from "../../common/Components";
 import Sizes from "./Sizes";
 import Counter from "./Counter";
 
-const product = {
-  mainImage: firstImage,
-  images: [firstImage, secondImage],
-  title: "Camisa Moletom Flamengo",
-  price: "50.00",
-  description: "Camisa Linda do flamengo",
-  availations: "",
-  sizes: ["PP", "P", "M", "G", "GG"],
-};
-
-export default function ProductPurchase() {
+export default function ProductPurchase({ product }) {
   const [quantity, setQuantity] = useState(0);
 
   return (
