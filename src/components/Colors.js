@@ -8,6 +8,7 @@ const colors = {
   greenLight: "#9fc9b0",
   white: "#f5f5f5",
   gray: "#666",
+  grayLight: "#D3D3D3",
   black: "#000000",
 };
 

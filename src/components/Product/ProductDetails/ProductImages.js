@@ -50,7 +50,6 @@ const Container = styled.div`
   display: flex;
   flex-flow: wrap;
   justify-content: space-around;
-  padding-top: 40px;
 `;
 
 const AllImages = styled.div`
