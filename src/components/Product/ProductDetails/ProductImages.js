@@ -5,28 +5,24 @@ import firstImage from "../../../assets/images/test_product.jpg";
 import secondImage from "../../../assets/images/test_product2.jpg";
 import colors from "../../Colors";
 
+const product = {
+  mainImage: firstImage,
+  images: [firstImage, secondImage],
+  name: "Camisa Moletom Flamengo",
+  price: "50.00",
+  description: "Camisa Linda do flamengo",
+  availations: "",
+};
+
 export default function Images() {
   const [availableImages, setAvailableImages] = useState([]);
   const [mainImage, setMainImage] = useState(firstImage);
-  const bigImageOptions = { ...bigImage, img: mainImage };
+  const [bigImageOptions, setBigImageOptions] = useState(null);
 
   useEffect(() => {
-    setAvailableImages([
-      firstImage,
-      secondImage,
-      secondImage,
-      secondImage,
-      secondImage,
-      secondImage,
-      secondImage,
-      secondImage,
-      secondImage,
-      secondImage,
-      secondImage,
-      secondImage,
-    ]);
-    setMainImage(firstImage);
-    console.log(bigImageOptions);
+    setAvailableImages(product.images);
+    setMainImage(product.mainImage);
+    setBigImageOptions({ ...bigImage, img: product.mainImage });
   }, []);
 
   return (
@@ -41,7 +37,9 @@ export default function Images() {
           />
         ))}
       </AllImages>
-      <ReactImageZoom {...bigImageOptions}></ReactImageZoom>
+      {bigImageOptions && (
+        <ReactImageZoom {...bigImageOptions}></ReactImageZoom>
+      )}
     </Container>
   );
 }
