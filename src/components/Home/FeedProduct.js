@@ -6,7 +6,6 @@ import {Link} from 'react-router-dom'
 export default function FeedProduct(props) {
     return(
         <FeedProductBox>
-
             <Link to="/" style={{textDecoration: 'none'}}>
                 <Image src={props.image}/>
             </Link>
