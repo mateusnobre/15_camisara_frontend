@@ -11,7 +11,7 @@ export default function UserEvaluation({ evaluation }) {
           {...{ size: 30, value: evaluation.rating, isHalf: true, edit: false }}
         ></ReactStars>
       </Star>
-      <text>{evaluation.opinion}</text>
+      <p>{evaluation.opinion}</p>
       <UserInfo>
         {evaluation.username} em {evaluation.evaluated_at}
       </UserInfo>
@@ -28,7 +28,7 @@ const Container = styled.div`
   border-top: 1px solid ${colors.grayLight};
 `;
 
-const BigText = styled.text`
+const BigText = styled.p`
   display: block;
   font-size: 30px;
   font-weight: 700;
@@ -40,20 +40,9 @@ const Star = styled.div`
   margin-bottom: 20px;
 `;
 
-const UserInfo = styled.text`
+const UserInfo = styled.p`
   color: ${colors.gray};
   font-weight: 700;
   margin-top: 20px;
   margin-bottom: 20px;
 `;
-
-const usersEvaluations = [
-  {
-    username: "Cesar",
-    evaluated_at: "07-05-2021",
-    rating: 5,
-    opinion:
-      "Produto muito bom, de bastante qualidade. Produto muito bom, de bastante qualidade. Produto muito bom, de bastante qualidade. Produto muito bom, de bastante qualidade. Produto muito bom, de bastante qualidade. Produto muito bom, de bastante qualidade. Produto muito bom, de bastante qualidade.Produto muito bom, de bastante qualidade. Produto muito bom, de bastante qualidade. Produto muito bom, de bastante qualidade. Produto muito bom, de bastante qualidade. ",
-    title: "Recomendo!",
-  },
-];

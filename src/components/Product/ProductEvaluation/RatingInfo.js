@@ -6,7 +6,7 @@ import colors from "../../Colors";
 export default function RatingInfo({ evaluations }) {
   const avgStart = {
     size: 40,
-    value: evaluations.avgRating,
+    value: parseInt(evaluations.avgRating),
     isHalf: true,
     edit: false,
   };
@@ -22,13 +22,13 @@ export default function RatingInfo({ evaluations }) {
       <AllStarsInfo>
         {Object.keys(evaluations.numberEvaluations)
           .slice(0, -1)
-          .map((key) => (
-            <RatingStarInfo>
+          .map((key, i) => (
+            <RatingStarInfo key={i}>
               <SmallText>{evaluations.numberEvaluations[key]}</SmallText>
               <ReactStars
                 {...{
                   size: 15,
-                  value: key,
+                  value: parseInt(key),
                   isHalf: true,
                   edit: false,
                 }}
@@ -48,13 +48,13 @@ const Container = styled.div`
   width: 100%;
 `;
 
-const BigText = styled.text`
+const BigText = styled.p`
   font-size: 50px;
   font-weight: 700;
   margin-right: 10px;
 `;
 
-const SmallText = styled.text`
+const SmallText = styled.p`
   font-size: 16px;
 `;
 

@@ -5,15 +5,15 @@ import colors from "../../Colors";
 export default function Sizes(props) {
   const { sizes } = props;
   const [selectedSize, setSelectedSize] = useState("");
-  console.log(sizes.length);
   return (
     <Container length={45 * sizes.length}>
-      {sizes.map((size) => (
+      {sizes.map((size, i) => (
         <Size
           onClick={() =>
             selectedSize === size ? setSelectedSize("") : setSelectedSize(size)
           }
           selected={selectedSize === size}
+          key={i}
         >
           {size}
         </Size>

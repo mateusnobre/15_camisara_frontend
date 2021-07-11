@@ -15,11 +15,11 @@ const Container = styled.div`
   flex-flow: wrap;
 `;
 
-const Title = styled.text`
+const Title = styled.p`
   font-size: 20px;
   font-weight: 700;
 `;
 
-const Text = styled.text`
+const Text = styled.p`
   line-height: 1.5;
 `;

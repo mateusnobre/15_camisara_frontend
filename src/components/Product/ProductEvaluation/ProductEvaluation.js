@@ -9,8 +9,8 @@ export default function ProductEvaluation({ product }) {
   return (
     <Container>
       <RatingInfo evaluations={evaluations}></RatingInfo>
-      {evaluations.usersEvaluations.map((userEvaluation) => (
-        <UserEvaluation evaluation={userEvaluation}></UserEvaluation>
+      {evaluations.usersEvaluations.map((userEvaluation, i) => (
+        <UserEvaluation evaluation={userEvaluation} key={i}></UserEvaluation>
       ))}
     </Container>
   );

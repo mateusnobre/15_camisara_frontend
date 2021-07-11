@@ -4,29 +4,36 @@ import ReactImageZoom from "react-image-zoom";
 import colors from "../../Colors";
 
 export default function Images({ product }) {
-  const [availableImages, setAvailableImages] = useState([]);
-  const [mainImage, setMainImage] = useState(null);
-  const [bigImageOptions, setBigImageOptions] = useState(null);
+  const [mainImage, setMainImage] = useState(product.main_image);
+  const [bigImageOptions, setBigImageOptions] = useState({
+    ...bigImage,
+    img: "https://static.remove.bg/remove-bg-web/8be32deab801c5299982a503e82b025fee233bd0/assets/start_remove-79a4598a05a77ca999df1dcb434160994b6fde2c3e9101984fb1be0f16d0a74e.png",
+  });
 
   useEffect(() => {
-    setAvailableImages(product.images);
-    setMainImage(product.mainImage);
-    setBigImageOptions({ ...bigImage, img: product.mainImage });
+    console.log(product.main_image);
+    console.log(Boolean(product.main_image));
   }, []);
+
+  function selectImage(imgSelected) {
+    setMainImage(imgSelected);
+    setBigImageOptions({ ...bigImage, img: imgSelected });
+  }
 
   return (
     <Container>
       <AllImages>
-        {availableImages.map((img) => (
+        {product.images.map((img, i) => (
           <SmallImage
             src={img}
             alt="Product Image"
             selected={img === mainImage}
-            onClick={() => setMainImage(img)}
+            onClick={() => selectImage(img)}
+            key={i}
           />
         ))}
       </AllImages>
-      {bigImageOptions && (
+      {Boolean(product.main_image) && (
         <ReactImageZoom {...bigImageOptions}></ReactImageZoom>
       )}
     </Container>
