@@ -1,9 +1,11 @@
 import styled from 'styled-components'
-
+import Topbar from '../components/Topbar';
+import Feed from '../components/Home/Feed'
 export default function Home() {
     return(
         <HomeBox>
-            Home
+            <Topbar/>
+            <Feed/>
         </HomeBox>
     )
 }
