@@ -10,12 +10,9 @@ export default function ProductDescription({ product }) {
 }
 
 const Container = styled.div`
-  height: 100px;
-  width: 100%;
+  width: 90%;
   display: flex;
   flex-flow: wrap;
-  padding-left: 40px;
-  padding-right: 40px;
 `;
 
 const Title = styled.text`
