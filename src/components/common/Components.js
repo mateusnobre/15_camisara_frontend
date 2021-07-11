@@ -23,4 +23,8 @@ export const Button = styled.button`
   color: ${colors.mainBlack};
   font-size: 16px;
   cursor: pointer;
+  :hover {
+    background-color: ${colors.orangeLight};
+    color: ${colors.white};
+  }
 `;

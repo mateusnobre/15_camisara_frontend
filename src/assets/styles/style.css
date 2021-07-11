@@ -8,6 +8,8 @@
 * {
   box-sizing: border-box;
   transition: all ease 0.2s;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 body {
@@ -21,4 +23,8 @@ body {
 
 a {
   text-decoration: inherit;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }

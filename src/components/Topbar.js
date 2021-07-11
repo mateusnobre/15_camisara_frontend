@@ -23,6 +23,7 @@ export default function Topbar() {
 const Container = styled.div`
   position: fixed;
   top: 0;
+  left: 0;
   height: 80px;
   width: 100%;
   background-color: ${colors.greenLight};
@@ -31,6 +32,7 @@ const Container = styled.div`
   align-items: center;
   padding-left: 50px;
   padding-right: 50px;
+  z-index: 1;
   img {
     height: 70px;
     width: auto;
