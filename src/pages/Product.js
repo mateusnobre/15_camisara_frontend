@@ -14,20 +14,18 @@ export default function Product() {
   const [product, setProduct] = useState({
     sizes: [],
     images: [],
-    evaluations: { usersEvaluations: [], numberEvaluations: [] },
   });
   const { id } = useParams();
 
   useState(() => {
-    console.log(id);
-    const request = axios.get(`http://127.0.0.1:4000/product/${id}`);
-    request.then((response) => {
-      setProduct(response.data);
-      console.log(response.data);
-    });
-    request.catch((error) => {
-      setErrorProduct(true);
-    });
+    axios
+      .get(`http://127.0.0.1:4000/product/${id}`)
+      .then((response) => {
+        setProduct(response.data);
+      })
+      .catch((error) => {
+        setErrorProduct(true);
+      });
   }, []);
 
   return (

@@ -1,9 +1,11 @@
 import styled from "styled-components";
 import ReactStars from "react-rating-stars-component";
 import { Button } from "../../common/Components";
-import colors from "../../Colors";
+import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 export default function RatingInfo({ evaluations }) {
+  const { id } = useParams();
   const avgStart = {
     size: 40,
     value: parseInt(evaluations.avgRating),
@@ -42,7 +44,9 @@ export default function RatingInfo({ evaluations }) {
       ) : (
         <p>Seja o primeira a avaliar!</p>
       )}
-      <Button>Avalie Agora</Button>
+      <Link to={`/review/${id}`}>
+        <Button>Avalie Agora</Button>
+      </Link>
     </Container>
   );
 }
