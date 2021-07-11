@@ -12,30 +12,36 @@ export default function RatingInfo({ evaluations }) {
   };
   return (
     <Container>
-      <AvgInfo>
-        <BigText>{evaluations.avgRating}</BigText>
-        <ReactStars {...avgStart}></ReactStars>
-        <SmallText>
-          Baseada em {evaluations.numberEvaluations["total"]} avaliações
-        </SmallText>
-      </AvgInfo>
-      <AllStarsInfo>
-        {Object.keys(evaluations.numberEvaluations)
-          .slice(0, -1)
-          .map((key, i) => (
-            <RatingStarInfo key={i}>
-              <SmallText>{evaluations.numberEvaluations[key]}</SmallText>
-              <ReactStars
-                {...{
-                  size: 15,
-                  value: parseInt(key),
-                  isHalf: true,
-                  edit: false,
-                }}
-              ></ReactStars>
-            </RatingStarInfo>
-          ))}
-      </AllStarsInfo>
+      {evaluations.numberEvaluations["total"] > 0 ? (
+        <>
+          <AvgInfo>
+            <BigText>{evaluations.avgRating}</BigText>
+            <ReactStars {...avgStart}></ReactStars>
+            <SmallText>
+              Baseada em {evaluations.numberEvaluations["total"]} avaliações
+            </SmallText>
+          </AvgInfo>
+          <AllStarsInfo>
+            {Object.keys(evaluations.numberEvaluations)
+              .slice(0, -1)
+              .map((key, i) => (
+                <RatingStarInfo key={i}>
+                  <SmallText>{evaluations.numberEvaluations[key]}</SmallText>
+                  <ReactStars
+                    {...{
+                      size: 15,
+                      value: parseInt(key),
+                      isHalf: true,
+                      edit: false,
+                    }}
+                  ></ReactStars>
+                </RatingStarInfo>
+              ))}
+          </AllStarsInfo>
+        </>
+      ) : (
+        <p>Seja o primeira a avaliar!</p>
+      )}
       <Button>Avalie Agora</Button>
     </Container>
   );

@@ -12,7 +12,7 @@ export default function ProductDescription({ product }) {
 const Container = styled.div`
   width: 90%;
   display: flex;
-  flex-flow: wrap;
+  flex-flow: wrap column;
 `;
 
 const Title = styled.p`
@@ -21,5 +21,6 @@ const Title = styled.p`
 `;
 
 const Text = styled.p`
+  margin-top: 10px;
   line-height: 1.5;
 `;

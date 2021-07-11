@@ -4,33 +4,44 @@ import Topbar from "../components/Topbar";
 import ProductDetails from "../components/Product/ProductDetails/ProductDetails";
 import ProductDescription from "../components/Product/ProductDescription/ProductDescription";
 import ProductEvaluation from "../components/Product/ProductEvaluation/ProductEvaluation";
+import ProductInvalid from "../components/Product/ProductInvalid/ProductInvalid";
 import { useState } from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 export default function Product() {
+  const [errorProduct, setErrorProduct] = useState(false);
   const [product, setProduct] = useState({
     sizes: [],
     images: [],
     evaluations: { usersEvaluations: [], numberEvaluations: [] },
   });
+  const { id } = useParams();
 
   useState(() => {
-    const request = axios.get("http://127.0.0.1:4000/product/6");
+    console.log(id);
+    const request = axios.get(`http://127.0.0.1:4000/product/${id}`);
     request.then((response) => {
       setProduct(response.data);
       console.log(response.data);
     });
     request.catch((error) => {
-      alert("Ocorreu um erro");
+      setErrorProduct(true);
     });
   }, []);
 
   return (
     <Container>
       <Topbar></Topbar>
-      <ProductDetails product={product}></ProductDetails>
-      <ProductDescription product={product}></ProductDescription>
-      <ProductEvaluation product={product}></ProductEvaluation>
+      {errorProduct ? (
+        <ProductInvalid />
+      ) : (
+        <>
+          <ProductDetails product={product}></ProductDetails>
+          <ProductDescription product={product}></ProductDescription>
+          <ProductEvaluation product={product}></ProductEvaluation>
+        </>
+      )}
     </Container>
   );
 }

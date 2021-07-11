@@ -2,22 +2,19 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import ReactImageZoom from "react-image-zoom";
 import colors from "../../Colors";
+import Zoom from "react-img-zoom";
 
 export default function Images({ product }) {
   const [mainImage, setMainImage] = useState(product.main_image);
   const [bigImageOptions, setBigImageOptions] = useState({
     ...bigImage,
-    img: "https://static.remove.bg/remove-bg-web/8be32deab801c5299982a503e82b025fee233bd0/assets/start_remove-79a4598a05a77ca999df1dcb434160994b6fde2c3e9101984fb1be0f16d0a74e.png",
+    img: product.main_image,
   });
-
-  useEffect(() => {
-    console.log(product.main_image);
-    console.log(Boolean(product.main_image));
-  }, []);
 
   function selectImage(imgSelected) {
     setMainImage(imgSelected);
     setBigImageOptions({ ...bigImage, img: imgSelected });
+    <Zoom img={mainImage} width={400} height={400} zoomScale={2}></Zoom>;
   }
 
   return (
@@ -33,9 +30,13 @@ export default function Images({ product }) {
           />
         ))}
       </AllImages>
-      {Boolean(product.main_image) && (
+      {Boolean(bigImageOptions.img) && (
         <ReactImageZoom {...bigImageOptions}></ReactImageZoom>
       )}
+
+      {/* {mainImage && (
+        <Zoom img={mainImage} width={400} height={400} zoomScale={2}></Zoom>
+      )} */}
     </Container>
   );
 }
@@ -68,5 +69,4 @@ const SmallImage = styled.img`
 const bigImage = {
   width: 400,
   zoomWidth: 400,
-  zoomStyle: { opacity: 0.5 },
 };
