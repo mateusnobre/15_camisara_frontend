@@ -4,7 +4,7 @@ import { Button } from "../../common/Components";
 import Sizes from "./Sizes";
 import Counter from "./Counter";
 
-export default function ProductPurchase({ product }) {
+export default function ProductPurchaseInfo({ product }) {
   const [quantity, setQuantity] = useState(0);
 
   return (

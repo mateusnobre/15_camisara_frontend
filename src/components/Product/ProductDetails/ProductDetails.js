@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import ProductImages from "./ProductImages";
-import ProductPurchase from "./ProductPurchase";
+import ProductPurchaseInfo from "./ProductPurchaseInfo";
 
 export default function ProductDetails({ product }) {
   return (
     <Container>
       <ProductImages product={product}></ProductImages>
-      <ProductPurchase product={product}></ProductPurchase>
+      <ProductPurchaseInfo product={product}></ProductPurchaseInfo>
     </Container>
   );
 }

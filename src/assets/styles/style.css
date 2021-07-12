@@ -23,6 +23,7 @@ body {
 
 a {
   text-decoration: inherit;
+  color: inherit;
 }
 
 ::-webkit-scrollbar {

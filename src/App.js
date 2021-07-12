@@ -37,7 +37,7 @@ export default function App() {
         <Route path="/product/:id">
           <Product></Product>
         </Route>
-        <Route path="/review/:product_id">
+        <Route path="/review/:productId">
           <Review></Review>
         </Route>
       </Switch>
