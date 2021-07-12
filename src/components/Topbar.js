@@ -5,7 +5,7 @@ import logo from "../assets/images/logo.png";
 import { Input } from "./common/Components";
 import { PersonOutline, CartOutline } from "react-ionicons";
 
-export default function Topbar() {
+export default function Topbar(props) {
   return (
     <TopbarBox>
       <Container>
@@ -17,10 +17,12 @@ export default function Topbar() {
           <Link to="/profile">
             <PersonOutline cssClasses="icon"></PersonOutline>
           </Link>
-          <CartOutline cssClasses="icon"></CartOutline>
+          <Link to="/checkout">
+            <CartOutline cssClasses="icon"></CartOutline>
+          </Link>
         </div>
       </Container>
-      <Header>loja</Header>
+      <Header>{props.title}</Header>
     </TopbarBox>
   );
 }

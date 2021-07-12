@@ -4,9 +4,12 @@ import {AiOutlineShoppingCart} from 'react-icons/ai'
 import {Link} from 'react-router-dom'
 
 export default function FeedProduct(props) {
+    function addToCart(){
+        console.log(1);
+    }
     return(
         <FeedProductBox>
-            <Link to="/" style={{textDecoration: 'none'}}>
+            <Link to={"/product/" + props.id} style={{textDecoration: 'none'}}>
                 <Image src={props.image}/>
             </Link>
             <Title>
@@ -16,17 +19,17 @@ export default function FeedProduct(props) {
                 R$ {props.price.toFixed(2)}
             </Price>
             <Bottom>
-                <Link to="/" style={{textDecoration: 'none'}}>
+                <Link to={"/product/" + props.id} style={{textDecoration: 'none'}}>
                     <SeeProduct>
                             quero conhecer
                     </SeeProduct>  
                 </Link>
-                <Link to="/" style={{textDecoration: 'none'}}>
+                <button onClick={addToCart} style={{textDecoration: 'none'}}>
                     <AddToCart>
                         + 
                         <AiOutlineShoppingCart size={20}/>
                     </AddToCart>
-                </Link>
+                </button>
             </Bottom>
         </FeedProductBox>
     )
@@ -78,15 +81,17 @@ const SeeProduct = styled.div`
 `
 
 const AddToCart = styled.div`
+    width: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 25px;
+    button{
     border: 2px solid ${colors.mainBlack};
     background-color: white;
     color: ${colors.mainBlack};
-    width: 50px;
     border-radius: 3px;
-    text-align: center;
-    line-height: 40px;
     height: 40px;
-    font-size: 25px;
     user-select: none;
+    }
 `
 
