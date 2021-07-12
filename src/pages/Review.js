@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import colors from "../components/Colors";
 import Topbar from "../components/Topbar";
-import Form from "../components/Review/Form";
-import ProductInfo from "../components/Review/ProductInfo";
+import Form from "../components/review/Form";
+import ProductInfo from "../components/review/ProductInfo";
 import { Link, useParams } from "react-router-dom";
 
 export default function Review() {

@@ -13,7 +13,9 @@ export default function Topbar() {
       </Link>
       <Input placeholder="Pesquisar"></Input>
       <div>
-        <PersonOutline cssClasses="icon"></PersonOutline>
+        <Link to="/profile">
+          <PersonOutline cssClasses="icon"></PersonOutline>
+        </Link>
         <CartOutline cssClasses="icon"></CartOutline>
       </div>
     </Container>

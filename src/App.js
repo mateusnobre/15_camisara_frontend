@@ -10,10 +10,11 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Checkout from "./pages/Checkout";
 import Product from "./pages/Product";
+import Profile from "./pages/Profile";
+import Review from "./pages/Review";
 
 import "./assets/styles/reset.css";
 import "./assets/styles/style.css";
-import Review from "./pages/Review";
 
 export default function App() {
   return (
@@ -35,10 +36,13 @@ export default function App() {
           <Checkout />
         </Route>
         <Route path="/product/:id">
-          <Product></Product>
+          <Product />
         </Route>
         <Route path="/review/:productId">
-          <Review></Review>
+          <Review />
+        </Route>
+        <Route path="/profile">
+          <Profile />
         </Route>
       </Switch>
     </Router>
