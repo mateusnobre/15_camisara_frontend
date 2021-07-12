@@ -1,24 +1,22 @@
 import styled from 'styled-components'
 import FeedProduct from './FeedProduct'
+import axios from 'axios'
+import { useEffect, useState } from 'react'
+
 export default function Feed() {
-    const url = 'https://assets.adidas.com/images/w_600,f_auto,q_auto/9b9c785d6e5747bc90dbacd401629893_9366/Camisa_1_CR_Flamengo_21-22_Vermelho_GG0995_01_laydown.jpg'
+    const baseUrl = "http://localhost:4000" // "https://camisara-backend.herokuapp.com"
+    const [data, setData] = useState([])
+    useEffect(() => {
+        const products = axios.get(baseUrl+"/products");
+        products.then((res) => {
+            setData(res.data);
+            console.log(data)
+        })
+    }, [])
     return(
         <FeedBox>
-            <FeedProduct image={url} price={20} title="camisa flamengo 90 anos" rating={4.6} free_shipping={true}/>
-            <FeedProduct image={url} price={20} title="camisa flamengo 90 anos" rating={4.6} free_shipping={true}/>
-            <FeedProduct image={url} price={20} title="camisa flamengo 90 anos" rating={4.6} free_shipping={true}/>
-            <FeedProduct image={url} price={20} title="camisa flamengo 90 anos" rating={4.6} free_shipping={true}/>
-            <FeedProduct image={url} price={20} title="camisa flamengo 90 anos" rating={4.6} free_shipping={true}/>
-            <FeedProduct image={url} price={20} title="camisa flamengo 90 anos" rating={4.6} free_shipping={true}/>
-            <FeedProduct image={url} price={20} title="camisa flamengo 90 anos" rating={4.6} free_shipping={true}/>
-            <FeedProduct image={url} price={20} title="camisa flamengo 90 anos" rating={4.6} free_shipping={true}/>
-            <FeedProduct image={url} price={20} title="camisa flamengo 90 anos" rating={4.6} free_shipping={true}/>
-            <FeedProduct image={url} price={20} title="camisa flamengo 90 anos" rating={4.6} free_shipping={true}/>
-            <FeedProduct image={url} price={20} title="camisa flamengo 90 anos" rating={4.6} free_shipping={true}/>
-            <FeedProduct image={url} price={20} title="camisa flamengo 90 anos" rating={4.6} free_shipping={true}/>
-            <FeedProduct image={url} price={20} title="camisa flamengo 90 anos" rating={4.6} free_shipping={true}/>
-            <FeedProduct image={url} price={20} title="camisa flamengo 90 anos" rating={4.6} free_shipping={true}/>
-            <FeedProduct image={url} price={20} title="camisa flamengo 90 anos" rating={4.6} free_shipping={true}/>
+            {data.map(p =>
+                <FeedProduct image={p.image} price={p.price} title={p.title} rating={p.rating}/>)}
         </FeedBox>
     );
 }
