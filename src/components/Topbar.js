@@ -14,13 +14,13 @@ export default function Topbar() {
         </Link>
         <Input placeholder="pesquisar"></Input>
         <div>
-          <PersonOutline cssClasses="icon"></PersonOutline>
+          <Link to="/profile">
+            <PersonOutline cssClasses="icon"></PersonOutline>
+          </Link>
           <CartOutline cssClasses="icon"></CartOutline>
         </div>
       </Container>
-      <Header>
-        loja
-      </Header>
+      <Header>loja</Header>
     </TopbarBox>
   );
 }
@@ -28,7 +28,7 @@ export default function Topbar() {
 const TopbarBox = styled.div`
   display: flex;
   flex-direction: column;
-`
+`;
 
 const Container = styled.div`
   position: fixed;
@@ -36,7 +36,7 @@ const Container = styled.div`
   left: 0;
   height: 80px;
   width: 100%;
-  background-color: white; 
+  background-color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -58,13 +58,13 @@ const Container = styled.div`
 
 const Header = styled.div`
   margin-top: 80px;
-  height : 80px;
-  line-height : 80px;
+  height: 80px;
+  line-height: 80px;
   color: white;
   font-weight: 700;
   width: 100vw;
   font-size: 50px;
   text-align: center;
   background-color: ${colors.greenLight};
-  user-select : none;
-`
+  user-select: none;
+`;

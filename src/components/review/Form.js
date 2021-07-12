@@ -11,7 +11,7 @@ export default function Form() {
   const [opinion, setOpinion] = useState("");
   const [rating, setRating] = useState(0);
   const token = localStorage.getItem("token");
-  const { product_id } = useParams();
+  const { productId } = useParams();
   const history = useHistory();
 
   const ratingStars = {
@@ -31,10 +31,10 @@ export default function Form() {
     const data = { title, opinion, rating };
     console.log(token, data, config);
     axios
-      .post(`http://127.0.0.1:4000/evaluation/${product_id}`, data, config)
+      .post(`http://127.0.0.1:4000/evaluation/${productId}`, data, config)
       .then((response) => {
         alert("Avaliação postada com sucesso");
-        history.push(`/product/${product_id}`);
+        history.push(`/product/${productId}`);
       })
       .catch((err) => {
         if (err.response.status === 401) {
@@ -71,7 +71,7 @@ export default function Form() {
 }
 
 const Container = styled.form`
-  height: 100%;
+  /* height: 100%; */
   display: flex;
   flex-flow: column wrap;
   justify-content: space-around;

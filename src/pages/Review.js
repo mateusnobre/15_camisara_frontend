@@ -1,17 +1,18 @@
-import { useState } from "react";
 import styled from "styled-components";
 import colors from "../components/Colors";
 import Topbar from "../components/Topbar";
-import axios from "axios";
-import Form from "../components/Review/Form";
-import { useParams } from "react-router-dom";
-import ProductInfo from "../components/Review/ProductInfo";
+import Form from "../components/review/Form";
+import ProductInfo from "../components/review/ProductInfo";
+import { Link, useParams } from "react-router-dom";
 
 export default function Review() {
+  const { productId } = useParams();
   return (
     <Container>
       <Topbar></Topbar>
-      <ProductInfo></ProductInfo>
+      <Link to={`/product/${productId}`}>
+        <ProductInfo></ProductInfo>
+      </Link>
       <Form></Form>
     </Container>
   );
@@ -19,10 +20,9 @@ export default function Review() {
 
 const Container = styled.div`
   background-color: ${colors.background};
-  padding-top: 100px;
-  height: 100vh;
+  height: 120vh;
   display: flex;
   flex-flow: wrap;
   justify-content: center;
-  align-items: center;
+  padding-bottom: 40px;
 `;

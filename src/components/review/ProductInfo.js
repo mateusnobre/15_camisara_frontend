@@ -5,14 +5,12 @@ import styled from "styled-components";
 
 export default function ProductInfo() {
   const [product, setProduct] = useState({});
-  const { product_id } = useParams();
+  const { productId } = useParams();
 
   useState(() => {
-    axios
-      .get(`http://127.0.0.1:4000/product/${product_id}`)
-      .then((response) => {
-        setProduct(response.data);
-      });
+    axios.get(`http://127.0.0.1:4000/product/${productId}`).then((response) => {
+      setProduct(response.data);
+    });
   });
 
   return (

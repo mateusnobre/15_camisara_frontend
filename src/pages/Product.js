@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import colors from "../components/Colors";
 import Topbar from "../components/Topbar";
-import ProductDetails from "../components/Product/ProductDetails/ProductDetails";
-import ProductDescription from "../components/Product/ProductDescription/ProductDescription";
-import ProductEvaluation from "../components/Product/ProductEvaluation/ProductEvaluation";
-import ProductInvalid from "../components/Product/ProductInvalid/ProductInvalid";
+import ProductDetails from "../components/product/ProductDetails/ProductDetails";
+import ProductDescription from "../components/product/ProductDescription/ProductDescription";
+import ProductEvaluation from "../components/product/ProductEvaluation/ProductEvaluation";
+import ProductInvalid from "../components/product/ProductInvalid/ProductInvalid";
 import { useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
