@@ -3,18 +3,24 @@ import styled from "styled-components";
 import ReactImageZoom from "react-image-zoom";
 import colors from "../../Colors";
 import Zoom from "react-img-zoom";
+import firstImage from "../../../assets/images/logo_symbol.png";
 
 export default function Images({ product }) {
   const [mainImage, setMainImage] = useState(product.main_image);
   const [bigImageOptions, setBigImageOptions] = useState({
     ...bigImage,
-    img: product.main_image,
+    img: firstImage,
   });
+  const [blocked, setBlocked] = useState(true);
+
+  useEffect(() => {
+    Boolean(product.main_image) &&
+      setBigImageOptions({ ...bigImage, img: product.main_image });
+  }, [product.main_image]);
 
   function selectImage(imgSelected) {
     setMainImage(imgSelected);
     setBigImageOptions({ ...bigImage, img: imgSelected });
-    <Zoom img={mainImage} width={400} height={400} zoomScale={2}></Zoom>;
   }
 
   return (
@@ -30,13 +36,9 @@ export default function Images({ product }) {
           />
         ))}
       </AllImages>
-      {Boolean(bigImageOptions.img) && (
+      {Boolean(product.main_image) && (
         <ReactImageZoom {...bigImageOptions}></ReactImageZoom>
       )}
-
-      {/* {mainImage && (
-        <Zoom img={mainImage} width={400} height={400} zoomScale={2}></Zoom>
-      )} */}
     </Container>
   );
 }
