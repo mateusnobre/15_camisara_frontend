@@ -1,9 +1,9 @@
 import styled from 'styled-components'
-
+import Topbar from '../components/Topbar';
 export default function Checkout() {
     return(
         <CheckoutBox>
-            Checkout
+            <Topbar title="carrinho"/>
         </CheckoutBox>
     )
 }

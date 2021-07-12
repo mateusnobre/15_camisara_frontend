@@ -8,7 +8,7 @@ export default function Profile() {
   const user = localStorage.getItem("user");
   return (
     <Container>
-      <Topbar></Topbar>
+      <Topbar title="loja"/>
       {user ? <UserInfo /> : <NoUser />}
     </Container>
   );

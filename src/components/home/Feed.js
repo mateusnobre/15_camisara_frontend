@@ -2,21 +2,19 @@ import styled from 'styled-components'
 import FeedProduct from './FeedProduct'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-
+import baseUrl from '../BaseURL'
 export default function Feed() {
-    const baseUrl = "http://localhost:4000" // "https://camisara-backend.herokuapp.com"
     const [data, setData] = useState([])
     useEffect(() => {
         const products = axios.get(baseUrl+"/products");
         products.then((res) => {
             setData(res.data);
-            console.log(data)
         })
-    }, [])
+    }, [data])
     return(
         <FeedBox>
             {data.map(p =>
-                <FeedProduct image={p.image} price={p.price} title={p.title} rating={p.rating}/>)}
+                <FeedProduct id={p.id} image={p.main_image} price={p.price} title={p.title} rating={p.rating}/>)}
         </FeedBox>
     );
 }

@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 import Topbar from '../components/Topbar';
-import Feed from '../components/Home/Feed'
+import Feed from '../components/home/Feed'
 export default function Home() {
     return(
         <HomeBox>
-            <Topbar/>
+            <Topbar title="loja"/>
             <Feed/>
         </HomeBox>
     )
