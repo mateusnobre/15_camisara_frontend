@@ -13,6 +13,7 @@ import Product from "./pages/Product";
 
 import "./assets/styles/reset.css";
 import "./assets/styles/style.css";
+import Review from "./pages/Review";
 
 export default function App() {
   return (
@@ -35,6 +36,9 @@ export default function App() {
         </Route>
         <Route path="/product/:id">
           <Product></Product>
+        </Route>
+        <Route path="/review/:product_id">
+          <Review></Review>
         </Route>
       </Switch>
     </Router>

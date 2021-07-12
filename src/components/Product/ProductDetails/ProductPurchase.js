@@ -29,7 +29,7 @@ const Container = styled.div`
   justify-content: space-around;
 `;
 
-const Text = styled.text`
+const Text = styled.p`
   font-size: 20px;
   font-weight: 700;
 `;

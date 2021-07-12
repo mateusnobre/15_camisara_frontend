@@ -2,33 +2,41 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import ReactImageZoom from "react-image-zoom";
 import colors from "../../Colors";
+import Zoom from "react-img-zoom";
 
 export default function Images({ product }) {
-  const [availableImages, setAvailableImages] = useState([]);
-  const [mainImage, setMainImage] = useState(null);
-  const [bigImageOptions, setBigImageOptions] = useState(null);
+  const [mainImage, setMainImage] = useState(product.main_image);
+  const [bigImageOptions, setBigImageOptions] = useState({
+    ...bigImage,
+    img: product.main_image,
+  });
 
-  useEffect(() => {
-    setAvailableImages(product.images);
-    setMainImage(product.mainImage);
-    setBigImageOptions({ ...bigImage, img: product.mainImage });
-  }, []);
+  function selectImage(imgSelected) {
+    setMainImage(imgSelected);
+    setBigImageOptions({ ...bigImage, img: imgSelected });
+    <Zoom img={mainImage} width={400} height={400} zoomScale={2}></Zoom>;
+  }
 
   return (
     <Container>
       <AllImages>
-        {availableImages.map((img) => (
+        {product.images.map((img, i) => (
           <SmallImage
             src={img}
             alt="Product Image"
             selected={img === mainImage}
-            onClick={() => setMainImage(img)}
+            onClick={() => selectImage(img)}
+            key={i}
           />
         ))}
       </AllImages>
-      {bigImageOptions && (
+      {Boolean(bigImageOptions.img) && (
         <ReactImageZoom {...bigImageOptions}></ReactImageZoom>
       )}
+
+      {/* {mainImage && (
+        <Zoom img={mainImage} width={400} height={400} zoomScale={2}></Zoom>
+      )} */}
     </Container>
   );
 }
@@ -61,5 +69,4 @@ const SmallImage = styled.img`
 const bigImage = {
   width: 400,
   zoomWidth: 400,
-  zoomStyle: { opacity: 0.5 },
 };

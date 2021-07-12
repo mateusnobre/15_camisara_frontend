@@ -1,42 +1,52 @@
 import styled from "styled-components";
 import ReactStars from "react-rating-stars-component";
 import { Button } from "../../common/Components";
-import colors from "../../Colors";
+import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 export default function RatingInfo({ evaluations }) {
+  const { id } = useParams();
   const avgStart = {
     size: 40,
-    value: evaluations.avgRating,
+    value: parseInt(evaluations.avgRating),
     isHalf: true,
     edit: false,
   };
   return (
     <Container>
-      <AvgInfo>
-        <BigText>{evaluations.avgRating}</BigText>
-        <ReactStars {...avgStart}></ReactStars>
-        <SmallText>
-          Baseada em {evaluations.numberEvaluations["total"]} avaliações
-        </SmallText>
-      </AvgInfo>
-      <AllStarsInfo>
-        {Object.keys(evaluations.numberEvaluations)
-          .slice(0, -1)
-          .map((key) => (
-            <RatingStarInfo>
-              <SmallText>{evaluations.numberEvaluations[key]}</SmallText>
-              <ReactStars
-                {...{
-                  size: 15,
-                  value: key,
-                  isHalf: true,
-                  edit: false,
-                }}
-              ></ReactStars>
-            </RatingStarInfo>
-          ))}
-      </AllStarsInfo>
-      <Button>Avalie Agora</Button>
+      {evaluations.numberEvaluations["total"] > 0 ? (
+        <>
+          <AvgInfo>
+            <BigText>{evaluations.avgRating}</BigText>
+            <ReactStars {...avgStart}></ReactStars>
+            <SmallText>
+              Baseada em {evaluations.numberEvaluations["total"]} avaliações
+            </SmallText>
+          </AvgInfo>
+          <AllStarsInfo>
+            {Object.keys(evaluations.numberEvaluations)
+              .slice(0, -1)
+              .map((key, i) => (
+                <RatingStarInfo key={i}>
+                  <SmallText>{evaluations.numberEvaluations[key]}</SmallText>
+                  <ReactStars
+                    {...{
+                      size: 15,
+                      value: parseInt(key),
+                      isHalf: true,
+                      edit: false,
+                    }}
+                  ></ReactStars>
+                </RatingStarInfo>
+              ))}
+          </AllStarsInfo>
+        </>
+      ) : (
+        <p>Seja o primeira a avaliar!</p>
+      )}
+      <Link to={`/review/${id}`}>
+        <Button>Avalie Agora</Button>
+      </Link>
     </Container>
   );
 }
@@ -48,13 +58,13 @@ const Container = styled.div`
   width: 100%;
 `;
 
-const BigText = styled.text`
+const BigText = styled.p`
   font-size: 50px;
   font-weight: 700;
   margin-right: 10px;
 `;
 
-const SmallText = styled.text`
+const SmallText = styled.p`
   font-size: 16px;
 `;
 
