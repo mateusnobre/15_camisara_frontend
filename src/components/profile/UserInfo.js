@@ -16,7 +16,6 @@ const Container = styled.div`
   background-color: ${colors.background};
   height: 100vh;
   margin-top: 80px;
-  padding-top: 40px;
   display: flex;
   flex-flow: wrap;
   justify-content: center;

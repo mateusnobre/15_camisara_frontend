@@ -20,10 +20,9 @@ export default function Review() {
 
 const Container = styled.div`
   background-color: ${colors.background};
-  padding-top: 100px;
-  height: 100vh;
+  height: 120vh;
   display: flex;
   flex-flow: wrap;
   justify-content: center;
-  align-items: center;
+  padding-bottom: 40px;
 `;

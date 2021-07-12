@@ -71,7 +71,7 @@ export default function Form() {
 }
 
 const Container = styled.form`
-  height: 100%;
+  /* height: 100%; */
   display: flex;
   flex-flow: column wrap;
   justify-content: space-around;

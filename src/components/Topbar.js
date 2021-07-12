@@ -7,20 +7,28 @@ import { PersonOutline, CartOutline } from "react-ionicons";
 
 export default function Topbar() {
   return (
-    <Container>
-      <Link to="/">
-        <img src={logo} alt="logo"></img>
-      </Link>
-      <Input placeholder="Pesquisar"></Input>
-      <div>
-        <Link to="/profile">
-          <PersonOutline cssClasses="icon"></PersonOutline>
+    <TopbarBox>
+      <Container>
+        <Link to="/">
+          <img src={logo} alt="logo"></img>
         </Link>
-        <CartOutline cssClasses="icon"></CartOutline>
-      </div>
-    </Container>
+        <Input placeholder="pesquisar"></Input>
+        <div>
+          <Link to="/profile">
+            <PersonOutline cssClasses="icon"></PersonOutline>
+          </Link>
+          <CartOutline cssClasses="icon"></CartOutline>
+        </div>
+      </Container>
+      <Header>loja</Header>
+    </TopbarBox>
   );
 }
+
+const TopbarBox = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
 const Container = styled.div`
   position: fixed;
@@ -28,7 +36,7 @@ const Container = styled.div`
   left: 0;
   height: 80px;
   width: 100%;
-  background-color: ${colors.greenLight};
+  background-color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -46,4 +54,17 @@ const Container = styled.div`
     width: 30px;
     cursor: pointer;
   }
+`;
+
+const Header = styled.div`
+  margin-top: 80px;
+  height: 80px;
+  line-height: 80px;
+  color: white;
+  font-weight: 700;
+  width: 100vw;
+  font-size: 50px;
+  text-align: center;
+  background-color: ${colors.greenLight};
+  user-select: none;
 `;
