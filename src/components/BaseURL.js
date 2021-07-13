@@ -1,2 +1,2 @@
-const baseUrl = "https://camisara-backend.herokuapp.com"
+const baseUrl = "http://camisara-backend.herokuapp.com"
 export default baseUrl

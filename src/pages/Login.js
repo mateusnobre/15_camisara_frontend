@@ -27,6 +27,7 @@ export default function Login() {
       history.push("/home");
     });
     request.catch((error) => {
+      console.log(error)
       if (error.response.status === 409) {
         alert("Usuario e/ou senha errados");
       } else {
