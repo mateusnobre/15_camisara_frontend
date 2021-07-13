@@ -18,7 +18,7 @@ export default function Login() {
     e.preventDefault();
     const body = { email, password };
 
-    const request = axios.post(baseUrl+ "/login", body);
+    const request = axios.post(baseUrl+"/login", body);
 
     request.then((response) => {
       localStorage.setItem("user", JSON.stringify(response.data.user));
