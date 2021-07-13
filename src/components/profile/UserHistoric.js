@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import baseUrl from "../BaseURL";
 
 export default function UserHistoric() {
   const [purchaseHistoric, setPurchaseHistoric] = useState([]);
@@ -13,14 +14,14 @@ export default function UserHistoric() {
         Authorization: `Bearer ${token}`,
       },
     };
-    axios.get("http://127.0.0.1:4000/purchases", config).then((response) => {
+    axios.get(baseUrl+ "/purchases", config).then((response) => {
       setPurchaseHistoric(response.data);
     });
-    axios.get("http://127.0.0.1:4000/wishlist", config).then((response) => {
+    axios.get(baseUrl+"/wishlist", config).then((response) => {
       setWishList(response.data);
       console.log(response.data);
     });
-  }, []);
+  }, [token]);
 
   return (
     <Container>
@@ -64,6 +65,7 @@ const Title = styled.p`
   font-size: 25px;
   margin-bottom: 30px;
   text-align: center;
+  user-select: none;
 `;
 
 const Box = styled.div`

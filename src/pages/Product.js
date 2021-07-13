@@ -8,6 +8,7 @@ import ProductInvalid from "../components/product/ProductInvalid/ProductInvalid"
 import { useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import baseUrl from "../components/BaseURL";
 
 export default function Product() {
   const [errorProduct, setErrorProduct] = useState(false);
@@ -19,7 +20,7 @@ export default function Product() {
 
   useState(() => {
     axios
-      .get(`http://127.0.0.1:4000/product/${id}`)
+      .get(baseUrl+ `/product/${id}`)
       .then((response) => {
         setProduct(response.data);
       })

@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import ReactImageZoom from "react-image-zoom";
 import colors from "../../Colors";
-import Zoom from "react-img-zoom";
 import firstImage from "../../../assets/images/logo_symbol.png";
 
 export default function Images({ product }) {
@@ -11,7 +10,6 @@ export default function Images({ product }) {
     ...bigImage,
     img: firstImage,
   });
-  const [blocked, setBlocked] = useState(true);
 
   useEffect(() => {
     Boolean(product.main_image) &&
