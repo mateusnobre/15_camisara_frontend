@@ -8,6 +8,7 @@ import {
 import logo from "../assets/images/logo.png";
 import { useState } from "react";
 import axios from "axios";
+import baseUrl from "../components/BaseURL";
 
 export default function SignUp() {
   const [username, setUsername] = useState("");
@@ -23,7 +24,7 @@ export default function SignUp() {
 
     const body = { username, email, password };
 
-    const request = axios.post("http://127.0.0.1:4000/sign-up", body);
+    const request = axios.post(baseUrl+"/sign-up", body);
     request.then((response) => {
       alert("Cadastro realizado com sucesso");
       history.push("/login");

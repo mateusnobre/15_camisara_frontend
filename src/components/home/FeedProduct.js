@@ -2,10 +2,18 @@ import styled from 'styled-components'
 import colors from '../Colors';
 import {AiOutlineShoppingCart} from 'react-icons/ai'
 import {Link} from 'react-router-dom'
-
+import OrderContext from '../../OrderContext';
+import { useContext } from 'react';
 export default function FeedProduct(props) {
+    const { order, setOrder } = useContext(OrderContext);
     function addToCart(){
-        console.log(1);
+        order.push({ id: props.id,
+                    title: props.title,
+                    price: props.price,
+                    size: "M",
+                    quantity: 1});
+        setOrder([...order]);
+        alert(`${props.title} adicionada ao carrinho!`)
     }
     return(
         <FeedProductBox>

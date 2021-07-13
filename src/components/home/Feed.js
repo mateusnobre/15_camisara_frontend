@@ -1,8 +1,9 @@
 import styled from 'styled-components'
 import FeedProduct from './FeedProduct'
 import axios from 'axios'
-import { useEffect, useState } from 'react'
+import { useEffect, useState} from 'react'
 import baseUrl from '../BaseURL'
+
 export default function Feed() {
     const [data, setData] = useState([])
     useEffect(() => {

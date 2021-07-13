@@ -2,13 +2,13 @@ import axios from "axios";
 import { useState } from "react";
 import { useParams } from "react-router";
 import styled from "styled-components";
-
+import baseUrl from "../BaseURL";
 export default function ProductInfo() {
   const [product, setProduct] = useState({});
   const { productId } = useParams();
 
   useState(() => {
-    axios.get(`http://127.0.0.1:4000/product/${productId}`).then((response) => {
+    axios.get(baseUrl + `/product/${productId}`).then((response) => {
       setProduct(response.data);
     });
   });

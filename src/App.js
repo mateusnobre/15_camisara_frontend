@@ -13,11 +13,16 @@ import Product from "./pages/Product";
 import Profile from "./pages/Profile";
 import Review from "./pages/Review";
 
+import OrderContext from "./OrderContext";
+
 import "./assets/styles/reset.css";
 import "./assets/styles/style.css";
+import { useState } from 'react';
 
 export default function App() {
+  const [order, setOrder] = useState([])
   return (
+    <OrderContext.Provider value={{order, setOrder}}>
     <Router>
       <Switch>
         <Route path="/" exact>
@@ -46,5 +51,6 @@ export default function App() {
         </Route>
       </Switch>
     </Router>
+    </OrderContext.Provider>
   );
 }

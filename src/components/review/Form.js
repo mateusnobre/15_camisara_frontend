@@ -5,6 +5,7 @@ import ReactStars from "react-rating-stars-component";
 import colors from "../Colors";
 import axios from "axios";
 import { useHistory, useParams } from "react-router-dom";
+import baseUrl from "../BaseURL";
 
 export default function Form() {
   const [title, setTitle] = useState("");
@@ -31,7 +32,7 @@ export default function Form() {
     const data = { title, opinion, rating };
     console.log(token, data, config);
     axios
-      .post(`http://127.0.0.1:4000/evaluation/${productId}`, data, config)
+      .post(baseUrl+`/evaluation/${productId}`, data, config)
       .then((response) => {
         alert("Avaliação postada com sucesso");
         history.push(`/product/${productId}`);

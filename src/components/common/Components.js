@@ -20,7 +20,8 @@ export const Button = styled.button`
   border-radius: 5px;
   outline: none;
   background-color: ${colors.greenLight};
-  color: ${colors.mainBlack};
+  color: ${colors.white};
+  font-weight: 700;
   font-size: 16px;
   cursor: pointer;
   :hover {

@@ -4,6 +4,7 @@ import UserEvaluation from "./UserEvaluation";
 import colors from "../../Colors";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import baseUrl from '../../BaseURL'
 
 export default function ProductEvaluation(props) {
   const { product } = props;
@@ -14,7 +15,7 @@ export default function ProductEvaluation(props) {
 
   useEffect(() => {
     axios
-      .get(`http://127.0.0.1:4000/evaluation/${product.id}`)
+      .get(baseUrl+`/evaluation/${product.id}`)
       .then((response) => {
         setEvaluations(response.data);
       });

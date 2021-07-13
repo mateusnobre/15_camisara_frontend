@@ -1,18 +1,16 @@
-import { useState } from "react";
 import styled from "styled-components";
 import colors from "../../Colors";
 
 export default function Sizes(props) {
-  const { sizes } = props;
-  const [selectedSize, setSelectedSize] = useState("");
+  const sizes = props.sizes;
   return (
     <Container length={45 * sizes.length}>
       {sizes.map((size, i) => (
         <Size
           onClick={() =>
-            selectedSize === size ? setSelectedSize("") : setSelectedSize(size)
+            props.size === size ? props.setSize("") : props.setSize(size)
           }
-          selected={selectedSize === size}
+          selected={props.size === size}
           key={i}
         >
           {size}

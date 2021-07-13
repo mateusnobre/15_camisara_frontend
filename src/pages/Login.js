@@ -8,7 +8,7 @@ import {
 import logo from "../assets/images/logo.png";
 import { useState } from "react";
 import axios from "axios";
-
+import baseUrl from "../components/BaseURL";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,7 +18,7 @@ export default function Login() {
     e.preventDefault();
     const body = { email, password };
 
-    const request = axios.post("http://127.0.0.1:4000/login", body);
+    const request = axios.post(baseUrl+ "/login", body);
 
     request.then((response) => {
       localStorage.setItem("user", JSON.stringify(response.data.user));

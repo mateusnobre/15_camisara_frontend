@@ -3,20 +3,41 @@ import { useState } from "react";
 import { Button } from "../../common/Components";
 import Sizes from "./Sizes";
 import Counter from "./Counter";
+import OrderContext from '../../../OrderContext';
+import { useContext } from 'react';
 
 export default function ProductPurchaseInfo({ product }) {
   const [quantity, setQuantity] = useState(0);
+  const [size, setSize] = useState("M");
 
+  const { order, setOrder } = useContext(OrderContext);
+  function addToCart(){
+      if (quantity > 0){
+        order.push({ id: product.id,
+                    title: product.title,
+                    price: product.price,
+                    size: size,
+                    quantity: quantity});
+        setOrder([...order]);
+        alert(`${product.title} adicionada ao carrinho!`)
+      }
+      else {
+        alert("Escolha pelo menos 1 unidade")
+      }
+  }
+  function addToWishlist(){
+    console.log(1);
+  }
   return (
     <Container>
       <Text>{product.title}</Text>
       <Text>R$ {product.price}</Text>
-      <Sizes sizes={product.sizes}></Sizes>
+      <Sizes size={size} setSize={setSize} sizes={product.sizes}></Sizes>
       <Purchase>
         <Counter quantity={quantity} setQuantity={setQuantity}></Counter>
-        <Button productPurchase={true}>Comprar</Button>
+        <Button onClick={addToCart} productPurchase={true}>Comprar</Button>
       </Purchase>
-      <Button>Adicionar na Lista de Desejos</Button>
+      <Button onClick={addToWishlist} >Adicionar na Lista de Desejos</Button>
     </Container>
   );
 }
