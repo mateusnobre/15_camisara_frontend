@@ -45,7 +45,6 @@ export default function UserHistoric() {
           <img src={product.main_image} alt={product.title} />
           <div>
             <p>Nome do produto : {product.title}</p>
-            <p>Quantidade : {product.quantity}</p>
           </div>
         </Box>
       ))}

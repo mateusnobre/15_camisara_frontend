@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import colors from "./Colors";
 import logo from "../assets/images/logo.png";
-import { Input } from "./common/Components";
 import { PersonOutline, CartOutline } from "react-ionicons";
 
 export default function Topbar(props) {
@@ -12,7 +11,6 @@ export default function Topbar(props) {
         <Link to="/">
           <img src={logo} alt="logo"></img>
         </Link>
-        <Input placeholder="pesquisar"></Input>
         <div>
           <Link to="/profile">
             <PersonOutline cssClasses="icon"></PersonOutline>

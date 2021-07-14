@@ -5,7 +5,15 @@ import Sizes from "./Sizes";
 import Counter from "./Counter";
 import OrderContext from '../../../OrderContext';
 import { useContext } from 'react';
+import baseUrl from '../../BaseURL'
+import axios from 'axios'
 
+const token = localStorage.getItem("token");
+const config = {
+  headers: {
+    authorization: `Bearer ${token}`,
+  },
+};
 export default function ProductPurchaseInfo({ product }) {
   const [quantity, setQuantity] = useState(0);
   const [size, setSize] = useState("M");
@@ -26,7 +34,11 @@ export default function ProductPurchaseInfo({ product }) {
       }
   }
   function addToWishlist(){
-    console.log(1);
+    axios
+      .post(baseUrl+`/wishlist/${product.id}`, {}, config)
+      .then(() => {
+          alert(`${product.title} adicionada à lista de desejos!`)
+        });
   }
   return (
     <Container>
@@ -35,7 +47,7 @@ export default function ProductPurchaseInfo({ product }) {
       <Sizes size={size} setSize={setSize} sizes={product.sizes}></Sizes>
       <Purchase>
         <Counter quantity={quantity} setQuantity={setQuantity}></Counter>
-        <Button onClick={addToCart} productPurchase={true}>Comprar</Button>
+        <Button onClick={addToCart} productPurchase={true}>Adicionar ao Carrinho</Button>
       </Purchase>
       <Button onClick={addToWishlist} >Adicionar na Lista de Desejos</Button>
     </Container>
