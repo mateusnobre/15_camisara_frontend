@@ -15,11 +15,9 @@ export default function UserProfile() {
 
   return (
     <Container>
-      <AttributeName>Email</AttributeName>
-      <AttributeValue>{user.email}</AttributeValue>
-      <AttributeName>Nome de usuário</AttributeName>
-      <AttributeValue>{user.username}</AttributeValue>
-      <Button onClick={logOut}>LogOut</Button>
+      <AttributeName>Email: {user.email}</AttributeName>
+      <AttributeName>Nome de Usuário: {user.username}</AttributeName>
+      <Button style={{width: "95%", marginBottom: "10px", marginTop: "100px"}} onClick={logOut}>Logout</Button>
     </Container>
   );
 }
@@ -32,20 +30,15 @@ const Container = styled.div`
   padding-left: 20px;
   border-radius: 5px;
   position: sticky;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
 const AttributeName = styled.h1`
   font-size: 20px;
   color: ${colors.mainBlack};
-`;
-
-const AttributeValue = styled.h2`
-  border: 1px solid ${colors.grayLight};
-  padding-left: 5px;
-  height: 40px;
-  width: 90%;
-  display: flex;
-  align-items: center;
   margin-top: 10px;
   margin-bottom: 20px;
+  display: flex;
 `;

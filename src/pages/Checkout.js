@@ -52,15 +52,15 @@ export default function Checkout() {
             ))}
             <Total>
                 <h1>total</h1>
-                R$ {order.map((p) => (p.price)).reduce(getSum, 0).toFixed(2)}
+                R$ {order.map((p) => (p.price * p.quantity)).reduce(getSum, 0).toFixed(2)}
             </Total>
             {user ? 
             <SendOrder onClick={sendOrder}>
                 enviar pedido
             </SendOrder>
             : 
-            <SendOrder>
-                Faça aqui seu login para fazer um pedido
+            <SendOrder >
+                Faça login para fazer um pedido
             </SendOrder>
             }
         </CheckoutBox>
